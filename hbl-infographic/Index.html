@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBL Microfinance Bank: Strategic Transformation 2028</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-primary': '#2563EB',   /* Vibrant Blue */
+                        'brand-secondary': '#06B6D4', /* Cyan */
+                        'brand-accent': '#F59E0B',    /* Amber */
+                        'brand-dark': '#1E293B',      /* Slate 800 */
+                        'brand-light': '#F8FAFC',     /* Slate 50 */
+                        'brand-success': '#10B981',   /* Emerald */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Chart Container Styling Rules */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px; /* Base height */
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        /* Custom Scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        
+        /* Material Design Card Hover */
+        .hover-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .hover-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-brand-light text-brand-dark font-sans leading-relaxed">
+
+    <!-- PLAN SUMMARY (Hidden Comment) -->
+    <!--
+    NARRATIVE PLAN:
+    1.  **Header/Hook:** Focus on the "2028 Mandate" identified in the interview (Islamic Banking shift) and the sheer scale (4M customers).
+    2.  **The Strategic Problem (DECIDE):** Use the course framework to visualize the dilemma of "Interest Stigma" vs. "Profitability".
+    3.  **Competitive Landscape:** A Radar chart comparing HBL MfB vs. Telco-based competitors (EasyPaisa) on attributes like Trust vs. Tech (Interview insights).
+    4.  **Customer Segmentation:** Breakdown of the 4M customer base (Farmers vs. Youth) and the FirstPay opportunity.
+    5.  **Financial Outlook:** A projection chart showing the decline of conventional loans and the rise of Islamic financing.
+    6.  **Implementation Roadmap:** A timeline of the migration strategy.
+    
+    VISUALIZATION CHOICES (NO SVG):
+    -   **Radar Chart (Chart.js):** To compare multi-faceted competitor strengths.
+    -   **Donut Chart (Chart.js):** To show the composition of the Loan Portfolio.
+    -   **Stacked Area Chart (Chart.js/Plotly):** To show the transition forecast (Conventional -> Islamic).
+    -   **Bar Chart (Chart.js):** Price/Cost analysis.
+    -   **CSS Cards/Timeline:** For Qualitative data (SWOT/Process).
+    -->
+
+    <!-- PALETTE: Vibrant Blue (#2563EB) & Cyan (#06B6D4) with Amber Accents (#F59E0B) -->
+
+    <!-- HERO SECTION -->
+    <header class="bg-gradient-to-r from-brand-primary to-brand-secondary text-white shadow-lg">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">HBL Microfinance Bank</h1>
+            <h2 class="text-2xl md:text-3xl font-light mb-6 opacity-90">Strategic Transformation 2025-2028</h2>
+            <div class="flex flex-wrap justify-center gap-6 mt-8">
+                <div class="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
+                    <span class="block text-4xl font-bold text-brand-accent">4 Million</span>
+                    <span class="text-sm uppercase tracking-wider">Customers to Graduate</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
+                    <span class="block text-4xl font-bold text-brand-accent">2028</span>
+                    <span class="text-sm uppercase tracking-wider">Islamic Banking Mandate</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
+                    <span class="block text-4xl font-bold text-brand-accent">100%</span>
+                    <span class="text-sm uppercase tracking-wider">Sharia Compliance Goal</span>
+                </div>
+            </div>
+            <p class="mt-8 text-lg max-w-2xl mx-auto opacity-80 italic">"From 2028, the complete banking structure of Pakistan will be converted to Islamic Banking... We have to graduate 4 million customers." — Head of Brand, HBL MfB</p>
+        </div>
+    </header>
+
+    <!-- SECTION 1: THE STRATEGIC DILEMMA (DECIDE MODEL) -->
+    <section class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto mb-10 text-center">
+            <h3 class="text-3xl font-bold text-brand-dark mb-4">The Strategic Dilemma</h3>
+            <p class="text-gray-600">Applying the <span class="font-semibold text-brand-primary">DECIDE Model</span> (Chapter 3) to the core challenge identified in the management interview. HBL MfB faces a critical pivot point driven by regulatory compulsion and cultural sentiment against "Riba" (Interest).</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- D: Define -->
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-brand-primary hover-card">
+                <div class="text-2xl mb-2">🚩 Define</div>
+                <h4 class="font-bold text-lg mb-2">The Core Problem</h4>
+                <p class="text-sm text-gray-600">Migrate a massive conventional loan book to Islamic modes by 2028 without losing customers to unregulated fintechs or informal lenders.</p>
+            </div>
+            <!-- E: Enumerate -->
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-brand-secondary hover-card">
+                <div class="text-2xl mb-2">🔢 Enumerate</div>
+                <h4 class="font-bold text-lg mb-2">Decision Factors</h4>
+                <p class="text-sm text-gray-600">1. Regulatory Deadline (2028)<br>2. "Interest is Bad" Stigma<br>3. High Cost of Funds (22% Policy Rate)<br>4. 4M Illiterate Customers</p>
+            </div>
+            <!-- C: Consider -->
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-brand-accent hover-card">
+                <div class="text-2xl mb-2">⚖️ Consider</div>
+                <h4 class="font-bold text-lg mb-2">Alternatives</h4>
+                <p class="text-sm text-gray-600">A. Rapid "Big Bang" Conversion (High Risk)<br>B. Phased "Hybrid" Graduation (Recommended)<br>C. Spin-off Islamic Subsidiary</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: COMPETITIVE LANDSCAPE (RADAR CHART) -->
+    <section class="bg-white py-12 border-y border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-3xl font-bold text-brand-dark mb-4">The Battleground: Banks vs. Fintech</h3>
+                    <p class="text-gray-600 mb-6">
+                        HBL MfB sits in a unique "Hybrid" position. The interview highlighted the threat from Telco-backed players like <strong>EasyPaisa</strong> (Telenor) and <strong>JazzCash</strong>.
+                        While fintechs dominate on <em>Speed</em> and <em>Tech</em>, HBL MfB leverages <em>Trust</em> and <em>Advisory</em> (High Touch).
+                    </p>
+                    <div class="bg-brand-light p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-bold text-brand-primary mb-2">Key Insight (Porter's Forces)</h4>
+                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                            <li><strong>Threat of Substitutes (High):</strong> "Arthis" (Moneylenders) & Mobile Wallets.</li>
+                            <li><strong>Buyer Power (High):</strong> Price sensitive farmers; 1% rate difference matters.</li>
+                            <li><strong>Rivalry (Intense):</strong> Saturation in Tier-1 districts.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Chart Container -->
+                <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center">
+                    <h4 class="text-center font-bold text-gray-700 mb-2">Competitive Profile Matrix</h4>
+                    <div class="chart-container">
+                        <canvas id="competitorRadarChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-gray-500 mt-2">Scale 1-10: Based on Interview & Market Analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: MARKET SEGMENTATION (DONUT CHART + LLM TOOL) -->
+    <section class="container mx-auto px-6 py-12">
+        <div class="text-center mb-10">
+            <h3 class="text-3xl font-bold text-brand-dark">Target Market Segmentation</h3>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Applying the <strong>STP Framework</strong> (Chapter 4). The bank is shifting focus from a generic "Poor" segment to distinct psychographic profiles.
+                The <span class="text-brand-primary font-bold">Progressive Farmer</span> drives the asset book, while the <span class="text-brand-secondary font-bold">Digital Youth</span> drives the FirstPay liability book.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Chart Side -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex flex-col items-center">
+                <h4 class="font-bold text-gray-700 mb-4">Current Portfolio Composition (Est.)</h4>
+                <div class="chart-container">
+                    <canvas id="segmentationChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Text/Details Side -->
+            <div class="space-y-6">
+                <div class="bg-brand-light p-5 rounded-lg border-l-4 border-brand-primary">
+                    <h4 class="font-bold text-lg flex items-center gap-2">🚜 The Progressive Farmer</h4>
+                    <p class="text-sm text-gray-600 mt-1">
+                        <strong>Need:</strong> Climate-resilient seeds, Solar Tube Wells.<br>
+                        <strong>Strategy:</strong> "Green Financing" bundles. High-touch advisory via HBL Zarai Deras.
+                    </p>
+                </div>
+
+                <div class="bg-brand-light p-5 rounded-lg border-l-4 border-brand-secondary">
+                    <h4 class="font-bold text-lg flex items-center gap-2">📱 The Digital Youth (Gig Worker)</h4>
+                    <p class="text-sm text-gray-600 mt-1">
+                        <strong>Need:</strong> Instant nano-loans, bike financing, low-cost payments.<br>
+                        <strong>Strategy:</strong> <span class="font-semibold">FirstPay App</span> acquisition. Zero-paperwork onboarding.
+                    </p>
+                </div>
+
+                <div class="bg-brand-light p-5 rounded-lg border-l-4 border-brand-accent">
+                    <h4 class="font-bold text-lg flex items-center gap-2">🕌 The Conservative Saver</h4>
+                    <p class="text-sm text-gray-600 mt-1">
+                        <strong>Need:</strong> Riba-free savings (Sharia Compliant).<br>
+                        <strong>Strategy:</strong> The key to solving the funding cost crisis. Attract deposits via <em>Mudarabah</em> accounts.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- GEMINI LLM INTEGRATION: Product Brainstormer -->
+        <div class="mt-12 p-8 bg-brand-dark rounded-xl shadow-xl">
+            <h3 class="text-3xl font-bold text-brand-success mb-4 flex items-center">
+                ✨ Sharia Product Brainstormer
+            </h3>
+            <p class="text-gray-300 mb-6">
+                Generate tailored, Sharia-compliant product ideas for a key customer segment based on the strategic mandate (Product/Service Strategy - Chapter 5).
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-4 mb-6">
+                <select id="segment-select" class="flex-grow p-3 rounded-lg border border-gray-700 bg-gray-800 text-white focus:ring-brand-success focus:border-brand-success">
+                    <option value="" disabled selected>Select a Target Segment</option>
+                    <option value="Progressive Farmer (Need: Solar Tube Wells, Climate Resilient Seeds)">🚜 Progressive Farmer</option>
+                    <option value="Digital Youth (Need: Instant Nano-loans, Bike Financing)">📱 Digital Youth (FirstPay)</option>
+                    <option value="Conservative Saver (Need: Riba-free savings, Mudarabah accounts)">🕌 Conservative Saver</option>
+                </select>
+                <button id="generate-button" class="bg-brand-success text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-emerald-600 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Generate 3 Product Ideas
+                </button>
+            </div>
+
+            <!-- Results Area -->
+            <div id="ideas-results" class="mt-6 space-y-4">
+                <!-- Results will be injected here -->
+                <p class="text-gray-400 text-sm italic" id="loading-indicator" style="display:none;">
+                    Generating ideas... This may take a moment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: FINANCIAL FORECAST (STACKED AREA/LINE) -->
+    <section class="bg-brand-dark text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-1">
+                    <h3 class="text-3xl font-bold mb-4 text-brand-accent">The 2028 Forecast</h3>
+                    <p class="text-gray-300 mb-6">
+                        This projection visualizes the aggressive migration strategy. As conventional loans are phased out (black line), Islamic financing products (green area) must scale rapidly to maintain the Gross Loan Portfolio (GLP).
+                    </p>
+                    <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                        <div class="text-3xl font-bold text-brand-success mb-1">15%</div>
+                        <div class="text-sm opacity-80">Net Portfolio Growth (CAGR)</div>
+                    </div>
+                    <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm mt-4">
+                        <div class="text-3xl font-bold text-brand-secondary mb-1">200 bps</div>
+                        <div class="text-sm opacity-80">Projected Margin Improvement (via Low-cost Islamic Deposits)</div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-xl shadow-2xl p-4 text-brand-dark">
+                        <h4 class="font-bold text-gray-700 mb-2 text-center">Portfolio Migration: Conventional vs. Islamic (PKR Billions)</h4>
+                        <div class="chart-container">
+                            <canvas id="forecastChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: IMPLEMENTATION TIMELINE -->
+    <section class="container mx-auto px-6 py-12">
+        <div class="text-center mb-12">
+            <h3 class="text-3xl font-bold text-brand-dark">Implementation Roadmap</h3>
+            <p class="text-gray-600">The "Phased Graduation" Strategy</p>
+        </div>
+
+        <div class="relative border-l-4 border-brand-primary ml-6 md:ml-auto md:mr-auto md:w-2/3 space-y-8 pl-8 pb-4">
+            <!-- Phase 1 -->
+            <div class="relative hover-card bg-white p-6 rounded-lg shadow border border-gray-100">
+                <span class="absolute -left-11 top-6 bg-brand-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                <h4 class="text-xl font-bold text-brand-primary">Phase 1: Foundation (Months 1-6)</h4>
+                <p class="text-sm text-gray-600 mt-2">
+                    <strong>Focus:</strong> Internal Training & Compliance.<br>
+                    • Certify 3,000+ Loan Officers in Islamic Finance.<br>
+                    • Upgrade Core Banking System for Sharia Compliance.<br>
+                    • Pilot "Islamic Windows" in 5 key districts.
+                </p>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="relative hover-card bg-white p-6 rounded-lg shadow border border-gray-100">
+                <span class="absolute -left-11 top-6 bg-brand-secondary text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                <h4 class="text-xl font-bold text-brand-secondary">Phase 2: The Pivot (Months 7-18)</h4>
+                <p class="text-sm text-gray-600 mt-2">
+                    <strong>Focus:</strong> Marketing & Migration.<br>
+                    • Launch "The Ethical Partner" Rebranding Campaign (Radio/BTL).<br>
+                    • Begin systematic conversion of renewed loans to <em>Murabaha</em>.<br>
+                    • FirstPay Merchant Wallet rollout.
+                </p>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="relative hover-card bg-white p-6 rounded-lg shadow border border-gray-100">
+                <span class="absolute -left-11 top-6 bg-brand-accent text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                <h4 class="text-xl font-bold text-brand-accent">Phase 3: 100% Compliance (Months 19-36)</h4>
+                <p class="text-sm text-gray-600 mt-2">
+                    <strong>Focus:</strong> Stabilization & 2028 Readiness.<br>
+                    • Full sunset of conventional interest-based products.<br>
+                    • Scale "Green Financing" (Solar Tube Wells) to all regions.<br>
+                    • Achieve 100% Sharia Compliance ahead of SBP deadline.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-100 border-t border-gray-300 py-8 text-center">
+        <p class="text-gray-500 text-sm">Generated for Strategic Marketing Management (MG 5017) | Data Sources: Management Interview, Annual Reports 2023-24</p>
+    </footer>
+
+    <!-- JAVASCRIPT FOR CHARTS AND GEMINI API -->
+    <script>
+        // --- UTILITY: Label Wrapping Function (16 char limit) ---
+        function wrapLabel(label, maxLen = 16) {
+            if (label.length <= maxLen) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + " " + words[i]).length <= maxLen) {
+                    currentLine += " " + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // --- GLOBAL CHART CONFIG ---
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#334155';
+        const tooltipConfig = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) return label.join(' ');
+                    return label;
+                }
+            }
+        };
+
+        // --- CHART 1: COMPETITOR RADAR ---
+        const radarCtx = document.getElementById('competitorRadarChart').getContext('2d');
+        new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: [
+                    'Brand Trust', 
+                    'Digital UX (App)', 
+                    'Rural Reach', 
+                    'Sharia Compliance', 
+                    'Agri Expertise',
+                    'Speed of Loan'
+                ].map(l => wrapLabel(l)),
+                datasets: [{
+                    label: 'HBL Microfinance',
+                    data: [9, 6, 8, 4, 9, 5], // Current state: High Trust, Low Sharia, Med Speed
+                    borderColor: '#2563EB',
+                    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                    pointBackgroundColor: '#2563EB',
+                    borderWidth: 2
+                }, {
+                    label: 'EasyPaisa (Telenor)',
+                    data: [6, 9, 7, 2, 3, 9], // High Speed/Tech, Low Agri/Sharia
+                    borderColor: '#F59E0B',
+                    backgroundColor: 'rgba(245, 158, 11, 0.2)',
+                    pointBackgroundColor: '#F59E0B',
+                    borderWidth: 2
+                }, {
+                    label: 'Khushhali Bank',
+                    data: [7, 4, 9, 3, 8, 4], // High Reach/Agri, Low Tech
+                    borderColor: '#94A3B8',
+                    backgroundColor: 'rgba(148, 163, 184, 0.2)',
+                    pointBackgroundColor: '#94A3B8',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: '#E2E8F0' },
+                        grid: { color: '#E2E8F0' },
+                        pointLabels: { font: { size: 11, weight: 'bold' } },
+                        suggestedMin: 0,
+                        suggestedMax: 10
+                    }
+                },
+                plugins: {
+                    tooltip: tooltipConfig,
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // --- CHART 2: SEGMENTATION DONUT ---
+        const segCtx = document.getElementById('segmentationChart').getContext('2d');
+        new Chart(segCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Agri Loans (Farmers)', 
+                    'Enterprise (Karobar)', 
+                    'Housing Finance', 
+                    'Gold Backed Loans', 
+                    'Salaried/Consumer'
+                ].map(l => wrapLabel(l)),
+                datasets: [{
+                    data: [45, 25, 15, 10, 5], // Estimated mix favoring Agri
+                    backgroundColor: [
+                        '#2563EB', // Blue
+                        '#06B6D4', // Cyan
+                        '#10B981', // Emerald
+                        '#F59E0B', // Amber
+                        '#64748B'  // Slate
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: tooltipConfig,
+                    legend: { position: 'right' }
+                },
+                cutout: '65%'
+            }
+        });
+
+        // --- CHART 3: FINANCIAL FORECAST (MIXED CHART) ---
+        const forecastCtx = document.getElementById('forecastChart').getContext('2d');
+        new Chart(forecastCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2024', '2025', '2026', '2027', '2028'],
+                datasets: [
+                    {
+                        label: 'Conventional Loans',
+                        data: [100, 80, 50, 20, 0], // Phasing out
+                        backgroundColor: '#1E293B', // Dark Slate
+                        stack: 'Stack 0'
+                    },
+                    {
+                        label: 'Islamic Financing',
+                        data: [5, 30, 70, 110, 145], // Phasing in + Growth
+                        backgroundColor: '#10B981', // Success Green
+                        stack: 'Stack 0'
+                    },
+                    {
+                        label: 'Total Portfolio Target',
+                        data: [105, 110, 120, 130, 145], // Growth Line
+                        type: 'line',
+                        borderColor: '#2563EB',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#white',
+                        pointBorderColor: '#2563EB',
+                        pointRadius: 5,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#F1F5F9' },
+                        title: { display: true, text: 'PKR Billions' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    tooltip: tooltipConfig,
+                    legend: { position: 'top' }
+                }
+            }
+        });
+
+        // --- GEMINI API INTEGRATION LOGIC ---
+
+        // Global API key (left blank for Canvas environment)
+        const apiKey = ""; 
+
+        // Utility function for exponential backoff (for robustness)
+        async function exponentialBackoffFetch(url, options, maxRetries = 5) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.ok) {
+                        return response;
+                    } else if (response.status === 429) {
+                        // Too Many Requests, retry with backoff
+                        const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                    } else {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                } catch (error) {
+                    if (i === maxRetries - 1) throw error;
+                    // For network errors or non-429 server errors, still apply backoff
+                    const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
+        }
+
+        const selectElement = document.getElementById('segment-select');
+        const buttonElement = document.getElementById('generate-button');
+        const resultsElement = document.getElementById('ideas-results');
+        const loadingIndicator = document.getElementById('loading-indicator');
+
+        if (buttonElement) {
+            buttonElement.addEventListener('click', generateProductIdeas);
+        }
+        
+        async function generateProductIdeas() {
+            const selectedSegment = selectElement.value;
+
+            if (!selectedSegment) {
+                resultsElement.innerHTML = '<p class="text-brand-accent font-semibold">Please select a target segment first.</p>';
+                return;
+            }
+
+            buttonElement.disabled = true;
+            loadingIndicator.style.display = 'block';
+            resultsElement.innerHTML = ''; 
+
+            const userQuery = `Generate three highly specific, innovative, and market-appropriate Sharia-compliant financial product ideas for the following HBL Microfinance Bank customer segment in Pakistan. The product MUST solve the segment's core need while adhering to the principles of Islamic Finance (Riba-free, profit/loss sharing). Segment: ${selectedSegment}`;
+            
+            const systemPrompt = "You are a senior product development specialist in Islamic Microfinance. Your task is to generate actionable, Sharia-compliant product concepts. Respond ONLY with the requested JSON structure.";
+            
+            // Use the specified model for text generation
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+            // Define the structured response schema
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "ARRAY",
+                        description: "A list of three distinct Sharia-compliant product ideas.",
+                        items: {
+                            type: "OBJECT",
+                            properties: {
+                                productName: { 
+                                    type: "STRING", 
+                                    description: "A catchy, market-friendly name for the product." 
+                                },
+                                shariaMode: { 
+                                    type: "STRING", 
+                                    description: "The specific Islamic finance concept used (e.g., Murabaha, Mudarabah, Ijarah, Salam)." 
+                                },
+                                conceptSummary: { 
+                                    type: "STRING", 
+                                    description: "A one-sentence summary of the product's function and value proposition." 
+                                }
+                            },
+                            required: ["productName", "shariaMode", "conceptSummary"]
+                        }
+                    }
+                }
+            };
+
+            try {
+                const response = await exponentialBackoffFetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                
+                let jsonString = '';
+                if (result.candidates && result.candidates.length > 0 && 
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    jsonString = result.candidates[0].content.parts[0].text;
+                } else {
+                    throw new Error("Invalid response structure from API.");
+                }
+
+                const ideas = JSON.parse(jsonString);
+
+                let html = '';
+                ideas.forEach((idea, index) => {
+                    html += `
+                        <div class="bg-gray-700 p-4 rounded-lg shadow-md transition duration-150 ease-in-out hover:bg-gray-600">
+                            <h5 class="text-lg font-bold text-brand-success">${index + 1}. ${idea.productName}</h5>
+                            <p class="text-sm text-gray-400 mb-1">
+                                <span class="font-semibold text-brand-accent">Mode:</span> ${idea.shariaMode}
+                            </p>
+                            <p class="text-sm text-gray-200 italic">${idea.conceptSummary}</p>
+                        </div>
+                    `;
+                });
+                resultsElement.innerHTML = html;
+
+            } catch (error) {
+                console.error('Gemini API Error:', error);
+                resultsElement.innerHTML = '<p class="text-red-400 font-semibold">Error generating ideas. Please check the console for details.</p>';
+            } finally {
+                buttonElement.disabled = false;
+                loadingIndicator.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
